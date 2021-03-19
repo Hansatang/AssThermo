@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+      minWidth="-Infinity" prefHeight="164.0" prefWidth="340.0"
+      xmlns="http:/**javafx.com/javafx/11.0.1"
+      xmlns:fx="http:/**javafx.com/fxml/1"
+      fx:controller="Client.view.radiator.RadiatorViewController">
+    <children>
+        <HBox>
+            <children>
+                <Label text="Radiator">
+                    <font>
+                        <Font name="System Bold" size="36.0"/>
+                    </font>
+                    <HBox.margin>
+                        <Insets left="5.0"/>
+                    </HBox.margin>
+                </Label>
+            </children>
+        </HBox>
+        <HBox prefHeight="100.0" prefWidth="200.0">
+            <children>
+                <VBox alignment="CENTER" prefHeight="200.0">
+                    <children>
+                        <Label text="Current state:">
+                            <font>
+                                <Font size="27.0"/>
+                            </font>
+                        </Label>
+                        <Label fx:id="stateLabel" alignment="CENTER"
+                               contentDisplay="RIGHT" prefHeight="51.0"
+                               prefWidth="159.0" text="HIGH"
+                               textAlignment="CENTER" textFill="#d00000"
+                               underline="true">
+                            <font>
+                                <Font size="28.0"/>
+                            </font>
+                        </Label>
+                    </children>
+                </VBox>
+                <VBox>
+                    <children>
+                        <Button fx:id="turnUpButton" mnemonicParsing="false"
+                                onAction="#stateUp" prefWidth="150.0"
+                                text="Turn up">
+                            <font>
+                                <Font size="16.0"/>
+                            </font>
+                            <VBox.margin>
+                                <Insets bottom="5.0" left="5.0" right="5.0"
+                                        top="5.0"/>
+                            </VBox.margin>
+                        </Button>
+                        <Button fx:id="turnDownButton" mnemonicParsing="false"
+                                onAction="#stateDown" prefWidth="150.0"
+                                text="Turn down">
+                            <font>
+                                <Font size="16.0"/>
+                            </font>
+                            <VBox.margin>
+                                <Insets bottom="5.0" left="5.0" right="5.0"
+                                        top="5.0"/>
+                            </VBox.margin>
+                        </Button>
+                    </children>
+                </VBox>
+            </children>
+        </HBox>
+        <HBox>
+            <VBox.margin>
+                <Insets bottom="5.0" left="15.0" right="5.0" top="5.0"/>
+            </VBox.margin>
+        </HBox>
+    </children>
+</VBox>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="TOP_CENTER" prefHeight="299.0" prefWidth="471.0" spacing="20.0"
+      userData="Temperature presenter" xmlns="http:/**javafx.com/javafx/11.0.1"
+      xmlns:fx="http:/**javafx.com/fxml/1"
+      fx:controller="Client.view.temperature.TemperatureViewController">
+    <children>
+        <HBox>
+            <children>
+                <Label alignment="CENTER" prefHeight="35.0" prefWidth="597.0"
+                       text="Temperature presenter" textAlignment="CENTER">
+                    <font>
+                        <Font size="24.0"/>
+                    </font>
+                </Label>
+            </children>
+        </HBox>
+        <HBox maxHeight="50.0" minHeight="50.0" prefHeight="50.0"
+              prefWidth="471.0">
+            <children>
+                <Label fx:id="outputLabel" alignment="CENTER" maxHeight="50.0"
+                       minHeight="50.0" prefHeight="50.0" prefWidth="420.0"
+                       textAlignment="CENTER">
+                    <font>
+                        <Font size="24.0"/>
+                    </font>
+                </Label>
+                <Label fx:id="Warn1" prefHeight="54.0" prefWidth="117.0"
+                       text="Label"/>
+            </children>
+        </HBox>
+        <HBox maxHeight="50.0" minHeight="50.0" prefHeight="50.0"
+              prefWidth="471.0">
+            <children>
+                <Label fx:id="outputLabel1" alignment="CENTER" maxHeight="50.0"
+                       minHeight="50.0" prefHeight="75.0" prefWidth="400.0"
+                       textAlignment="CENTER">
+                    <font>
+                        <Font size="24.0"/>
+                    </font>
+                </Label>
+                <Label fx:id="Warn2" prefHeight="52.0" prefWidth="95.0"
+                       text="Label"/>
+            </children>
+        </HBox>
+        <HBox alignment="BOTTOM_CENTER" prefHeight="100.0" prefWidth="200.0">
+            <children>
+                <VBox prefHeight="200.0" prefWidth="200.0">
+                    <children>
+                        <Label text="Max"/>
+                        <TextField fx:id="MaxTemp" promptText="30"/>
+                        <VBox prefHeight="200.0" prefWidth="200.0">
+                            <children>
+                                <Label text="Min"/>
+                                <TextField fx:id="MinTemp" promptText="10"/>
+                            </children>
+                        </VBox>
+                    </children>
+                </VBox>
+                <Button fx:id="ChooseMinMax" mnemonicParsing="false"
+                        onAction="#onChoose" prefHeight="103.0" prefWidth="88.0"
+                        text="Choose new critical values" wrapText="true"/>
+            </children>
+            <opaqueInsets>
+                <Insets/>
+            </opaqueInsets>
+        </HBox>
+    </children>
+</VBox>
