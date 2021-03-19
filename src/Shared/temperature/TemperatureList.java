@@ -1,8 +1,9 @@
 package Shared.temperature;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class TemperatureList
+public class TemperatureList implements Serializable
 {
    private ArrayList<Temperature> list;
 

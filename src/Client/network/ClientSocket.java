@@ -15,6 +15,7 @@ public class ClientSocket implements ClientModel
 {
   private PropertyChangeSupport support;
 
+
   public ClientSocket()
   {
     support = new PropertyChangeSupport(this);
@@ -50,7 +51,7 @@ public class ClientSocket implements ClientModel
         Request request = (Request) inFromServer.readObject();
         System.out.println("000"+request.getType());
         System.out.println("111"+request.getArg());
-        support.firePropertyChange(request.getType(), null, request.getArg());
+        support.firePropertyChange(request.getType(), request.getArg2(), request.getArg());
       }
     }
     catch (IOException | ClassNotFoundException e)
@@ -69,7 +70,6 @@ public class ClientSocket implements ClientModel
     {
       e.printStackTrace();
     }
-
   }
 
   @Override public Radiator getRadiator()

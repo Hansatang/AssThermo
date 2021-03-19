@@ -5,7 +5,6 @@ import Server.model.mediator.temperature.TemperatureModel;
 
 import Shared.Request;
 import Shared.radiator.Radiator;
-import Shared.temperature.Temperature;
 
 import java.beans.PropertyChangeEvent;
 import java.io.IOException;
@@ -49,15 +48,17 @@ public class SocketHandler implements Runnable
       if ("Listener".equals(request.getType()))
       {
         System.out.println("3" + request.getArg());
-      radiatorModel.addListener("StateChanged", this::onStateChanged);
-     //   temperatureModel.addListener("TemperatureChanged", this::onNewLogEntry);
+        radiatorModel.addListener("StateChanged", this::onStateChanged);
+        temperatureModel
+            .addListener("TemperatureChanged", this::onNewTemperature);
         System.out.println(4);
       }
       else if ("Update".equals(request.getType()))
       {
         System.out.println("5" + request.getArg());
-      //  radiatorModel.update();
-        outToClient.writeObject(new Request("Update", radiatorModel.getRadiator()));
+        //  radiatorModel.update();
+        outToClient
+            .writeObject(new Request("Update", radiatorModel.getRadiator()));
 
       }
       else if ("getRadiator".equals(request.getType()))
@@ -78,14 +79,9 @@ public class SocketHandler implements Runnable
       {
         System.out.println("5" + request.getArg());
         radiatorModel.higherState();
-        outToClient.writeObject(new Request("higherState", radiatorModel.getRadiator()));
+        outToClient.writeObject(
+            new Request("higherState", radiatorModel.getRadiator()));
 
-      }
-      else if ("addTemperature".equals(request.getType()))
-      {
-        System.out.println("5" + request.getArg());
-        temperatureModel.addTemperature((Temperature) request.getArg());
-        outToClient.writeObject(new Request("addTemperature", 110));
       }
     }
     catch (IOException | ClassNotFoundException e)
@@ -94,14 +90,16 @@ public class SocketHandler implements Runnable
     }
   }
 
-  private void onNewLogEntry(PropertyChangeEvent evt)
+  private void onNewTemperature(PropertyChangeEvent evt)
   {
     try
     {
+      System.out.println("100" + evt.getPropertyName());
       System.out.println("111" + evt.getOldValue());
-      outToClient
-          .writeObject(new Request(evt.getPropertyName(), evt.getNewValue()));
       System.out.println("122" + evt.getNewValue());
+      outToClient
+          .writeObject(new Request(evt.getPropertyName(), evt.getNewValue(),evt.getOldValue()));
+
     }
     catch (IOException e)
     {
@@ -113,7 +111,7 @@ public class SocketHandler implements Runnable
   {
     try
     {
-      System.out.println("10"+evt.getPropertyName());
+      System.out.println("10" + evt.getPropertyName());
       System.out.println("11" + evt.getOldValue());
       System.out.println("12" + evt.getNewValue());
       outToClient

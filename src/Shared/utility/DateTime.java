@@ -1,10 +1,11 @@
-package Client.model.utility;
+package Shared.utility;
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-public class DateTime
+public class DateTime implements Serializable
 {
    private Date date;
 

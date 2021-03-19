@@ -14,16 +14,15 @@ public class TemperatureModelManager implements TemperatureModel
 
   public TemperatureModelManager(ClientModel cf)
   {
-
     property = new PropertyChangeSupport(this);
     this.client = cf;
-    client.addListener("updated", this::onUpdated);
+    client.addListener("TemperatureChanged", this::onUpdated);
   }
 
   /** Adds a temperature to the temperature list.  * */
   @Override public void addTemperature(String id, double value)
   {
-    client.addTemperature(id,value);
+    client.addTemperature(id, value);
   }
 
   /** Add listener to the Property Change Support object initialized in the constructor.  * */
@@ -42,6 +41,8 @@ public class TemperatureModelManager implements TemperatureModel
 
   private void onUpdated(PropertyChangeEvent propertyChangeEvent)
   {
-   property.firePropertyChange(propertyChangeEvent);
+    System.out.println("InModelNew " + propertyChangeEvent.getNewValue());
+    System.out.println("InModelOld " + propertyChangeEvent.getOldValue());
+    property.firePropertyChange(propertyChangeEvent);
   }
 }

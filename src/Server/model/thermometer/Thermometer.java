@@ -2,6 +2,7 @@ package Server.model.thermometer;
 
 import Server.model.mediator.radiator.RadiatorModel;
 import Server.model.mediator.temperature.TemperatureModel;
+import Shared.temperature.Temperature;
 
 public class Thermometer implements Runnable
 {
@@ -44,9 +45,16 @@ public class Thermometer implements Runnable
   {
     while (true)
     {
-      System.out.println("Hej "+radiatorModel.getRadiator().getCurrentState().getPower());
-      temperatureModel.addTemperature(id, temperature(radiatorModel.getRadiator().getCurrentState().getPower(), 0, 6));
-   //   radiatorModel.update();
+      Temperature temperature = new Temperature(id,
+          temperature(radiatorModel.getRadiator().getCurrentState().getPower(),
+              0, 6));
+      temperatureModel.addTemperature(id,
+          temperature(radiatorModel.getRadiator().getCurrentState().getPower(),
+              0, 6));
+      //   temperatureModel.addTemperature(id, temperature(radiatorModel.getRadiator().getCurrentState().getPower(), 0, 6));
+      System.out.println(
+          "Hej " + radiatorModel.getRadiator().getCurrentState().getPower());
+      //   radiatorModel.update();
 
       try
       {

@@ -1,9 +1,5 @@
 package Server.model.mediator.temperature;
 
-
-
-
-
 import Shared.temperature.Temperature;
 import Shared.temperature.TemperatureList;
 
@@ -26,17 +22,27 @@ public class TemperatureModelManager implements TemperatureModel
   {
     Temperature temperature = new Temperature(id, value);
     temperatureList.addTemperature(temperature);
-    property.firePropertyChange("TemperatureChanged",
-        temperatureList.getLastTemperature("2"),
-        temperatureList.getLastTemperature("1"));
+    if (id.equals("1"))
+    {
+      System.out.println("Temp2 " + temperatureList.getLastTemperature("2"));
+      System.out.println("Temp1 " + temperatureList.getLastTemperature("1"));
+      property.firePropertyChange("TemperatureChanged", temperatureList.getLastTemperature("2"),
+          temperatureList.getLastTemperature("1"));
+    }
   }
 
-  @Override public void addTemperature(Temperature temperature)
+  @Override public void addTemperature(String id, Temperature temperature)
   {
     temperatureList.addTemperature(temperature);
-    property.firePropertyChange("TemperatureChanged",
-        temperatureList.getLastTemperature("2"),
-        temperatureList.getLastTemperature("1"));
+    if (temperatureList.getLastTemperature("2") != null)
+    {
+      if (temperatureList.getLastTemperature("1") != null)
+      {
+        property.firePropertyChange("TemperatureChanged",
+            temperatureList.getLastTemperature("2"),
+            temperatureList.getLastTemperature("1"));
+      }
+    }
   }
 
   /** Add listener to the Property Change Support object initialized in the constructor.  * */

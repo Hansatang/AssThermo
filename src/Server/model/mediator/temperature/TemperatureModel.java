@@ -6,7 +6,7 @@ import Shared.temperature.Temperature;
 public interface TemperatureModel extends NamedPropertyChangeSubject
 {
   void addTemperature(String id, double value);
-  void addTemperature(Temperature temperature);
+  void addTemperature(String id, Temperature temperature);
 
 
 }

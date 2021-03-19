@@ -1,8 +1,11 @@
 package Shared.temperature;
 
-import Client.model.utility.DateTime;
 
-public class Temperature
+import Shared.utility.DateTime;
+
+import java.io.Serializable;
+
+public class Temperature implements Serializable
 {
    private String id;
    private double value;

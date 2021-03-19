@@ -38,7 +38,6 @@ public class RadiatorModelManager implements RadiatorModel
    * */
   @Override public void update()
   {
-
     property
         .firePropertyChange("StateChanged", null, radiator.getCurrentState());
   }
